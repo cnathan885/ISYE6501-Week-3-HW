@@ -9,3 +9,5 @@ data <- read.table("temps.txt", header=TRUE)
 
 head (data)
 data
+
+#test

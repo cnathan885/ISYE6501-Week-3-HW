@@ -5,9 +5,15 @@ install.packages("fpp2")
 library(tidyverse)
 library(fpp2)
 
-data <- read.table("temps.txt", header=TRUE)
+#import data
+raw.data <- read.table("temps.txt", header=TRUE)
 
-head (data)
-data
+#convert dataframe to vector for time series
+data<-ts(as.vector(unlist(raw.data[,2:21])),start=1996,frequency=123)
 
-#test
+plot(data)
+
+holt.model <- HoltWinters(data)
+print(holt.model)
+
+plot(holt.model)
